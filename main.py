@@ -6,6 +6,8 @@ from constants import *
 
 def main():
     pygame.init()
+    clock = pygame.time.Clock()
+    dt = 0
     pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     while True:
@@ -14,6 +16,8 @@ def main():
                 return
         screen.fill((0,0,0))
         pygame.display.flip()
+        clock.tick(60)                  #Sets draw speed to 60fps
+        dt += clock.get_time() / 1000   #Records increments delta time stored value
 
 if __name__ == "__main__":
     main()
