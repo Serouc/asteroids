@@ -46,6 +46,8 @@ class Player(CircleShape):
         if keys[pygame.K_SPACE]:
             self.shoot()
 
+        self.screenwrap()
+
     def shoot(self):
         if self.shot_timer > 0:
             return
