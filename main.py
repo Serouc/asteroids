@@ -26,7 +26,7 @@ def main():
     Player.containers = (updatable, drawable)
     AsteroidField.containers = (updatable)
     Asteroid.containers = (asteroids, updatable, drawable)
-    Shot.containers = (updatable, drawable)
+    Shot.containers = (shots, updatable, drawable)
 
     # Create objects
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
@@ -50,8 +50,13 @@ def main():
 
         for asteroid in asteroids:
             if asteroid.collision(player) == True:
-                print("Game over!")
                 sys.exit()
+            
+            for shot in shots:
+                if shot.collision(asteroid) == True:
+                    asteroid.kill()
+                    shot.kill()
+
 
         pygame.display.flip()
         clock.tick(60)                  #Sets draw speed to 60fps
