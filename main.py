@@ -25,7 +25,7 @@ def main():
 
         pygame.display.flip()
         clock.tick(60)                  #Sets draw speed to 60fps
-        dt += clock.get_time() / 1000   #Records increments delta time stored value
+        dt = clock.get_time() / 1000   #Records increments delta time stored value
 
 if __name__ == "__main__":
     main()
