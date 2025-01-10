@@ -14,15 +14,19 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Create empty named groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
 
+    # Add classes to groups
     Player.containers = (updatable, drawable)
     AsteroidField.containers = (updatable)
     Asteroid.containers = (asteroids, updatable, drawable)
 
+    # Create objects
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    asteroidfield = AsteroidField()
 
     # Game Starts
     while True:
@@ -31,8 +35,12 @@ def main():
                 return
         
         screen.fill("black")
+
+        # .update on each object that is in the updatable group (by class)
         for obj in updatable:
             obj.update(dt)
+
+        # .draw on each object that is in the drawable group (by class)
         for obj in drawable:
             obj.draw(screen)
 
