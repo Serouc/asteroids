@@ -13,6 +13,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    updatable = (player)
+    drawable = (player)
 
     while True:
         for event in pygame.event.get():
@@ -20,8 +22,8 @@ def main():
                 return
         
         screen.fill((0,0,0))
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        drawable.draw(screen)
 
         pygame.display.flip()
         clock.tick(60)                  #Sets draw speed to 60fps
